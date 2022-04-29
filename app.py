@@ -18,8 +18,8 @@ def repeaterConf():
     password = request.form['pass']
     scheme = connect.SchemeWPA('wlan1', ssid, {"ssid": ssid,"psk": password})
     scheme.save()
-    
-    subprocess.Popen(['shutdown','-r','now'])
+    subprocess.Popen(['shutdown','-r','+1'])
+    return render_template('connect.html')
     
 if __name__=="__main__":
-    app.run(debug=True, host='0.0.0.0', port=81)
+    app.run(debug=True, host='0.0.0.0', port=80)
