@@ -5,7 +5,8 @@ from wifi.utils import ensure_file_exists
 
 class SchemeWPA(Scheme):
 
-    interfaces = "/etc/wpa_supplicant/wpa_supplicant-wlan1.conf"
+    # interfaces = "/etc/wpa_supplicant/wpa_supplicant-wlan1.conf"
+    interfaces = "/etc/wpa_supplicant/wpa_supplicant-wlan0.conf"
 
     def __init__(self, interface, name, options=None):
         self.interface = interface
