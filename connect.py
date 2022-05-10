@@ -14,7 +14,8 @@ class SchemeWPA(Scheme):
 
     def __str__(self):
         options = ''.join("\n    {k}=\"{v}\"".format(k=k, v=v) for k, v in self.options.items())
-        return "network={" + options + '\n}\n'
+        # return "network={" + options + '\n}\n'
+        return "country=EC" + "\n" + "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev" + "\n" + "update_config=1" + "\n" + "network={" + options + "\n    mode=0" + "\n}\n"
 
     def __repr__(self):
             return 'Scheme(interface={interface!r}, name={name!r}, options={options!r}'.format(**vars(self))
@@ -24,7 +25,8 @@ class SchemeWPA(Scheme):
         Writes the configuration to the :attr:`interfaces` file.
         """
         if not self.find(self.interface, self.name):
-            with open(self.interfaces, 'a') as f:
+            # with open(self.interfaces, 'a') as f:
+            with open(self.interfaces, 'w') as f:
                 f.write('\n')
                 f.write(str(self))        
 
