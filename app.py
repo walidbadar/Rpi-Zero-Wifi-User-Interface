@@ -18,7 +18,7 @@ def repeaterConf():
     password = request.form['pass']
     scheme = connect.SchemeWPA('wlan0', ssid, {"ssid": ssid,"psk": password})
     scheme.save()
-    # subprocess.Popen(['shutdown','-r','+1'])
+    subprocess.Popen(['shutdown','-r','+1'])
     return render_template('connect.html')
     
 if __name__=="__main__":
